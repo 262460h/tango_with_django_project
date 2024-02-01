@@ -7,9 +7,6 @@
     </head>
 
     <body>
-        <div>
-            <a href="/rango/">Index</a><br />
-        </div>
 
         <div>
         {% if category %}
@@ -17,9 +14,7 @@
             {% if pages %}
             <ul>
                 {% for page in pages %}
-                <li>
-                    <a href="{{ page.url }}">{{ page.title }}</a>
-                </li>
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
             {% else %}
@@ -28,6 +23,10 @@
         {% else %}
             The specified category does not exist.
         {% endif %}
+        </div>
+
+        <div>
+            <a href="/rango/">Index</a><br />
         </div>
 
     </body>

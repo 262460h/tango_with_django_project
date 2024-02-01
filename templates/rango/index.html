@@ -15,8 +15,8 @@
             <strong>{{ boldmessage }}</strong>
         </div>
 
-        <h2>Most Liked Categories</h2>
         <div>
+        <h2>Most Liked Categories</h2>
         {% if categories %}
             <ul>
                 {% for category in categories %}
@@ -30,14 +30,12 @@
         {% endif %}
         </div>
 
-        <h2>Most Viewed Pages</h2>
         <div>
+        <h2>Most Viewed Pages</h2>
         {% if pages %}
             <ul>
                 {% for page in pages %}
-                    <li>
-                        <a href="{{ page.url }}">{{ page.title }}</a>
-                    </li>
+                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
