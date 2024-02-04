@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category
-from rango.models import Page
+from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -33,6 +32,7 @@ def show_category(request, category_name_slug):
 
     return render(request, 'rango/category.html', context=context_dict)
 
+@login_required
 def add_category(request):
     form = CategoryForm()
 
@@ -47,7 +47,7 @@ def add_category(request):
     
     return render(request, 'rango/add_category.html', {'form': form})
 
-
+@login_required
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -131,3 +131,12 @@ def user_login(request):
         
     else:
         return render(request, 'rango/login.html')
+
+@login_required
+def restricted(request):
+    return render(request, 'rango/restricted.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('rango:index'))
