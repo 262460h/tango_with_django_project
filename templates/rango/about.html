@@ -5,15 +5,14 @@
 {% load staticfiles %}
 {{ MEDIA_URL }}
 
-<title>
-    {% block title_block %}
-        About Rango
-    {% endblock %}
-</title>
+{% block title_block %}
+    About Rango
+{% endblock %}
 
 {% block body_block %}
     <h1>Rango says...</h1>
         here is the about page. <br />
+        <p>Visits: {{ visits }} </p>
         <bold> This tutorial has been put together by Madison. </bold>
 
             <img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat." />

@@ -18,6 +18,10 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
+#Cookie settings
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 #Restriction Redirect
 LOGIN_URL = 'rango:login'
 
